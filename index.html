@@ -25,14 +25,14 @@
   </script>
 <meta property="og:type" content="website">
 <meta property="og:title" content="Not A Blog">
-<meta property="og:url" content="https://blog.anshumansingh.ml/index.html">
+<meta property="og:url" content="http://blog.anshumansingh.ml/index.html">
 <meta property="og:site_name" content="Not A Blog">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Anshuman Singh">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://blog.anshumansingh.ml/">
+<link rel="canonical" href="http://blog.anshumansingh.ml/">
 
 
 <script class="page-configurations">
@@ -155,7 +155,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -198,7 +198,117 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.anshumansingh.ml/2021/01/20/Functions-Vs-Co-routines/">
+    <link itemprop="mainEntityOfPage" href="http://blog.anshumansingh.ml/2021/04/17/Unity-Integrating-Firebase-Realtime-Database/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Anshuman Singh">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Not A Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/04/17/Unity-Integrating-Firebase-Realtime-Database/" class="post-title-link" itemprop="url">Unity: Integrating Firebase Realtime Database!</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-17 23:12:00 / Modified: 23:24:12" itemprop="dateCreated datePublished" datetime="2021-04-17T23:12:00+05:30">2021-04-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/Game-Development/" itemprop="url" rel="index"><span itemprop="name">Game Development</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Firebase offers a complete SDK in order to easily integrate its different services (database, authentication, etc). We would be looking into integrating the realtime database in a simple unity project.</p>
+<h2 id="Pre-requisites"><a href="#Pre-requisites" class="headerlink" title="Pre-requisites"></a>Pre-requisites</h2><ul>
+<li>[✓]  Unity 5.3 or later</li>
+<li>[✓]  VSCode(With unity extensions) or visual studio code with c# support</li>
+<li>[✓]  Firebase SDK installed</li>
+</ul>
+<h2 id="End-Goal"><a href="#End-Goal" class="headerlink" title="End Goal"></a>End Goal</h2><p>To Demonstrate reading and writing from the firebase real-time database(from now on referred to as RTDB), We’ll be creating an application that would display the counter value directly from the database, and increase its value by one on clicking a button.</p>
+<h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><ol>
+<li><strong>Configure the Firebase Project</strong><ol>
+<li>Create a new firebase project, head to Realtime Database section and create a database. Select test mode for security rules while creating it.</li>
+<li>In the rtdb node, create a node “counter”. This would be from where we will be reading data from the unity project.</li>
+<li>(Optional) Re-download the google-services.json file and replace it in your unity project to ensure that the rtdb link is configured properly in unity.</li>
+</ol>
+</li>
+<li><strong>Setup Unity Project</strong><ol>
+<li>Ensure that the firebase database package is present in the unity project.</li>
+<li>Create a simple UI.</li>
+<li>Create a DBManager, that will control all the db connections.</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">using UnityEngine.UI;</span><br><span class="line">using Firebase;</span><br><span class="line">using Firebase.Database;</span><br><span class="line">public class FirebaseDBManager : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    DatabaseReference reference;</span><br><span class="line">    public Text scoreText;</span><br><span class="line">    <span class="keyword">void</span> Start()</span><br><span class="line">    &#123;</span><br><span class="line">        reference = FirebaseDatabase.DefaultInstance.RootReference;</span><br><span class="line">        FirebaseDatabase.DefaultInstance</span><br><span class="line">       .GetReference(<span class="string">&quot;counter&quot;</span>)</span><br><span class="line">       .ValueChanged += HandleUpdateScore;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public <span class="keyword">void</span> HandleUpdateScore(object sender, ValueChangedEventArgs args)</span><br><span class="line">    &#123;</span><br><span class="line">        DataSnapshot snapshot = args.Snapshot;</span><br><span class="line">        Debug.Log(snapshot.Value);</span><br><span class="line">        scoreText.text = snapshot.Value.ToString();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public <span class="keyword">void</span> UpdateScore()</span><br><span class="line">    &#123;</span><br><span class="line">        FirebaseDatabase.DefaultInstance</span><br><span class="line">      .GetReference(<span class="string">&quot;counter&quot;</span>)</span><br><span class="line">      .GetValueAsync().ContinueWith(<span class="function"><span class="params">task</span> =&gt;</span></span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">if</span> (task.IsFaulted)</span><br><span class="line">          &#123;</span><br><span class="line">              Debug.LogError(task);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> <span class="keyword">if</span> (task.IsCompleted)</span><br><span class="line">          &#123;</span><br><span class="line">              DataSnapshot snapshot = task.Result;</span><br><span class="line">              int value = int.Parse(Convert.ToString(snapshot.Value));</span><br><span class="line">              value++;</span><br><span class="line">              reference.Child(<span class="string">&quot;counter&quot;</span>).SetValueAsync(value);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In short: we have a listener attached to the counter node, and a function which sets the value(on clicking the button), So whenever this function is called, the value is updated in firebase. and As the value is changed, the listener function is also called which updates the UI</p>
+<ol start="3">
+<li><strong>Run the Project</strong></li>
+</ol>
+<p>If everything’s done right, the project should work and the value should be updating in the project as well as the database ^ _ ^</p>
+<h2 id="Possible-Issues"><a href="#Possible-Issues" class="headerlink" title="Possible Issues:"></a>Possible Issues:</h2><ol>
+<li>The build environment is not set correctly. Is should be set to android as firebase sdk currently does not support native environments(Mac/Windows/Linux)</li>
+<li>Enable Firebase Realtime Database in the firebase project</li>
+<li>Firebase rtdb url may not be present in the google-services.json file</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://blog.anshumansingh.ml/2021/01/20/Functions-Vs-Co-routines/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -314,7 +424,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.anshumansingh.ml/2020/11/11/Why-Electron/">
+    <link itemprop="mainEntityOfPage" href="http://blog.anshumansingh.ml/2020/11/11/Why-Electron/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -345,7 +455,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-14 10:57:58" itemprop="dateModified" datetime="2021-03-14T10:57:58+05:30">2021-03-14</time>
+        <time title="Modified: 2021-03-23 16:36:01" itemprop="dateModified" datetime="2021-03-23T16:36:01+05:30">2021-03-23</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">

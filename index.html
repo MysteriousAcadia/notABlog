@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
-
-
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -15,15 +13,14 @@
 <link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
-
-<script class="hexo-configurations">
+<script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"blog.anshumansingh.ml","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+    var CONFIG = {"hostname":"blog.anshumansingh.ml","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
-<meta property="og:type" content="website">
+
+  <meta property="og:type" content="website">
 <meta property="og:title" content="Not A Blog">
 <meta property="og:url" content="https://blog.anshumansingh.ml/index.html">
 <meta property="og:site_name" content="Not A Blog">
@@ -31,11 +28,10 @@
 <meta property="article:author" content="Anshuman Singh">
 <meta name="twitter:card" content="summary">
 
-
 <link rel="canonical" href="https://blog.anshumansingh.ml/">
 
 
-<script class="page-configurations">
+<script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
@@ -44,66 +40,60 @@
     lang   : 'en'
   };
 </script>
-<title>Not A Blog</title>
+
+  <title>Not A Blog</title>
   
+
+
 
 
 
 
   <noscript>
   <style>
-  body { margin-top: 2rem; }
-
+  .use-motion .brand,
   .use-motion .menu-item,
-  .use-motion .sidebar,
+  .sidebar-inner,
   .use-motion .post-block,
   .use-motion .pagination,
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-header {
-    visibility: visible;
-  }
-
-  .use-motion .header,
-  .use-motion .site-brand-container .toggle,
-  .use-motion .footer { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
   .use-motion .site-title,
-  .use-motion .site-subtitle,
-  .use-motion .custom-logo-image {
+  .use-motion .site-subtitle {
     opacity: initial;
     top: initial;
   }
 
-  .use-motion .logo-line {
-    transform: scaleX(1);
-  }
-
-  .search-pop-overlay, .sidebar-nav { display: none; }
-  .sidebar-panel { display: block; }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
 
-  <main class="main">
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
+      <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">Not A Blog</h1>
-      <i class="logo-line"></i>
+      <span class="logo-line-after"><i></i></span>
     </a>
   </div>
 
@@ -116,92 +106,54 @@
 
 
 
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
 
 
 
 </div>
-        
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-overview-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Anshuman Singh</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives">
-          <span class="site-state-item-count">3</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">5</span>
-        <span class="site-state-item-name">categories</span>
-      </div>
-  </nav>
-</div>
-
-
-
-        </div>
-      </div>
-    </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
     </header>
 
     
-  <div class="back-to-top" role="button">
+  <div class="back-to-top">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
 
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
 
-    <div class="main-inner index posts-expand">
-
-    
-
-
-<div class="post-block">
+          <div class="content index posts-expand">
+            
+      
   
   
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://blog.anshumansingh.ml/2021/04/17/Unity-Integrating-Firebase-Realtime-Database/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpeg">
       <meta itemprop="name" content="Anshuman Singh">
       <meta itemprop="description" content="">
     </span>
@@ -211,36 +163,35 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/17/Unity-Integrating-Firebase-Realtime-Database/" class="post-title-link" itemprop="url">Unity: Integrating Firebase Realtime Database!</a>
+          
+            <a href="/2021/04/17/Unity-Integrating-Firebase-Realtime-Database/" class="post-title-link" itemprop="url">Unity: Integrating Firebase Realtime Database!</a>
         </h2>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
 
-      <time title="Created: 2021-04-17 23:12:00 / Modified: 23:24:12" itemprop="dateCreated datePublished" datetime="2021-04-17T23:12:00+05:30">2021-04-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Unity/Game-Development/" itemprop="url" rel="index"><span itemprop="name">Game Development</span></a>
-        </span>
-    </span>
+              <time title="Created: 2021-04-17 23:12:00 / Modified: 23:24:12" itemprop="dateCreated datePublished" datetime="2021-04-17T23:12:00+05:30">2021-04-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/Game-Development/" itemprop="url" rel="index"><span itemprop="name">Game Development</span></a>
+                </span>
+            </span>
 
-  
-</div>
+          
 
         </div>
       </header>
@@ -249,6 +200,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
+
+      
           <p>Firebase offers a complete SDK in order to easily integrate its different services (database, authentication, etc). We would be looking into integrating the realtime database in a simple unity project.</p>
 <h2 id="Pre-requisites"><a href="#Pre-requisites" class="headerlink" title="Pre-requisites"></a>Pre-requisites</h2><ul>
 <li>[✓]  Unity 5.3 or later</li>
@@ -289,29 +242,22 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
+      </footer>
   </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
+  
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.anshumansingh.ml/2021/01/20/Functions-Vs-Co-routines/">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.anshumansingh.ml/2021/03/08/Cybersecurity-in-30-Days/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpeg">
       <meta itemprop="name" content="Anshuman Singh">
       <meta itemprop="description" content="">
     </span>
@@ -321,42 +267,28 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/20/Functions-Vs-Co-routines/" class="post-title-link" itemprop="url">Unity: Functions Vs Co-routines</a>
+          
+            <a href="/2021/03/08/Cybersecurity-in-30-Days/" class="post-title-link" itemprop="url">Ethical Hacking in 30 Days!</a>
         </h2>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-01-20 23:46:00" itemprop="dateCreated datePublished" datetime="2021-01-20T23:46:00+05:30">2021-01-20</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-14 10:57:14" itemprop="dateModified" datetime="2021-03-14T10:57:14+05:30">2021-03-14</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Unity/Game-Development/" itemprop="url" rel="index"><span itemprop="name">Game Development</span></a>
-        </span>
-    </span>
+              <time title="Created: 2021-03-08 23:24:00" itemprop="dateCreated datePublished" datetime="2021-03-08T23:24:00+05:30">2021-03-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-04-25 02:23:36" itemprop="dateModified" datetime="2021-04-25T02:23:36+05:30">2021-04-25</time>
+              </span>
 
-  
-</div>
+          
 
         </div>
       </header>
@@ -365,6 +297,133 @@
     
     
     <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Ethical hacking has been one of the skills I want to master for a long time. But I always find a way to procastinate and not start learning. That’s why I’ve taken up a “30 day Challenge” to start my journey in Ethical Hacking!</p>
+<p>During these 30 days, I’ll be devoting atleast an hour everyday and try learning something in the field. I’ll try documenting my journey and post regular updates on my progress! With the help of a friend and few online resources, I’ve selected 3 courses to learn from and few websites, blogs and twitter accounts to follow.</p>
+<h4 id="Courses-I-plan-to-complete"><a href="#Courses-I-plan-to-complete" class="headerlink" title="Courses I plan to complete:"></a>Courses I plan to complete:</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://academy.tcm-sec.com/">Basics of Ethical Hacking by Heath</a></li>
+<li><a target="_blank" rel="noopener" href="https://youtube.com/playlist?list=PL1y1iaEtjSYiiSGVlL1cHsXN_kvJOOhu-">Web Security by MIT</a></li>
+<li><a target="_blank" rel="noopener" href="https://portswigger.net/web-security">Web Security from PortSwigger</a></li>
+</ul>
+<h4 id="Websites-I-follow"><a href="#Websites-I-follow" class="headerlink" title="Websites I follow"></a>Websites I follow</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://tryhackme.com/">https://tryhackme.com/</a></li>
+<li><a target="_blank" rel="noopener" href="https://pentester.land/list-of-bug-bounty-writeups.html">Pentester.Land</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.intigriti.com/">Intigriti</a></li>
+</ul>
+<h1 id="Weekly-Updates"><a href="#Weekly-Updates" class="headerlink" title="Weekly Updates"></a>Weekly Updates</h1><ul>
+<li><h4 id="Week-1"><a href="#Week-1" class="headerlink" title="Week 1"></a>Week 1</h4><p>Started the Practical Ethical Hacking course offered by TCM security.<br>Things I learnt in the first week:</p>
+<ul>
+<li>Introduction to hacking, cyber security, red team, blue team, different fields and different aspects</li>
+<li>Stages of analysis, installed the most popular tools and websites used by experts to do ethical hacking.</li>
+<li>Installed Kali linux and brushed up on basics of terminal and bash scripting.</li>
+<li>Learnt and explored about Shell Binding vs reverse shell binding.</li>
+</ul>
+</li>
+<li><h4 id="Week-2"><a href="#Week-2" class="headerlink" title="Week 2"></a>Week 2</h4><p>It was a continuation of the course that I started in the previous week. My main focus was on trying to learn the implementation of tools and when it would be required.</p>
+<ul>
+<li>Learned the usage and the syntax of most commonly used tools by people like Nmap, masscan, Metasploit, and Nessus</li>
+<li>Solved few easy challenges on Kioptrix and watched a few walkthroughs.</li>
+</ul>
+</li>
+<li><h4 id="Week-3"><a href="#Week-3" class="headerlink" title="Week 3"></a>Week 3</h4><p>With the course almost complete, I started off with the Stanford CS253 Web Security course which is taken by Feross(available on youtube). This course is intended to give an overview of web security, understand the common attacks, best practices, and have a better understanding of web security issues. During this week I explored:</p>
+<ul>
+<li>HTML and Javascript</li>
+<li>HTTP, Cookies, Sessions and Session Attacks</li>
+<li>Same Origin Policy, its exceptions and Cross-site scripting(XSS)</li>
+<li>Best practices against XSS</li>
+</ul>
+</li>
+<li><h4 id="Week-4"><a href="#Week-4" class="headerlink" title="Week 4"></a>Week 4</h4><p>Completed the course started on web security. Also explored more into the topics I learned last week and these as well:</p>
+<ul>
+<li>Privacy and Fingerprinting</li>
+<li>DDoS, Phishing, Code Injection</li>
+<li>TLS</li>
+<li>Authentication(JWT, OAuth)</li>
+<li>Server side security, best coding practices</li>
+<li>DNS and DNS rebinding attacks.</li>
+</ul>
+</li>
+</ul>
+<p>Apart from these courses, I’ve also started to solve challenges on tryhackme and hackthebox!</p>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>I was able to devote atleast an hour everyday (some days it went as high as 4 hours!). Overall taking up this challenge helped me to block time from my schedule and learn a skill which I always wanted to learn. I’m still a beginner and still no where near the pros but its a good start and I will learn more and become better at it over the time!</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.anshumansingh.ml/2021/01/20/Functions-Vs-Co-routines/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Anshuman Singh">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Not A Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/20/Functions-Vs-Co-routines/" class="post-title-link" itemprop="url">Unity: Functions Vs Co-routines</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-01-20 23:46:00" itemprop="dateCreated datePublished" datetime="2021-01-20T23:46:00+05:30">2021-01-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-14 10:57:14" itemprop="dateModified" datetime="2021-03-14T10:57:14+05:30">2021-03-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unity/Game-Development/" itemprop="url" rel="index"><span itemprop="name">Game Development</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
           <h1 id="Functions-vs-Co-routines"><a href="#Functions-vs-Co-routines" class="headerlink" title="Functions vs Co-routines"></a>Functions vs Co-routines</h1><p>You can find a video I made on this post <a target="_blank" rel="noopener" href="https://youtu.be/s71JTOBu_CE">here:</a> <a target="_blank" rel="noopener" href="https://youtu.be/s71JTOBu_CE">https://youtu.be/s71JTOBu_CE</a></p>
 <h2 id="What-are-Functions-in-unity"><a href="#What-are-Functions-in-unity" class="headerlink" title="What are Functions in unity?"></a>What are Functions in unity?</h2><p>Functions is one of the fundamental concepts of programming language. A function is a block of code, that is meant to do a particular task and then return a value. Now some functions can do work but return nothing. On the other hand, some functions can do no work but return a value. Both the cases are possible and we will see a function in action with an example!</p>
 <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Let’s say I want to multiply 2 numbers and then add 7 to the answer.</p>
@@ -405,29 +464,22 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
+      </footer>
   </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
+  
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://blog.anshumansingh.ml/2020/11/11/Why-Electron/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpeg">
       <meta itemprop="name" content="Anshuman Singh">
       <meta itemprop="description" content="">
     </span>
@@ -437,46 +489,45 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/11/11/Why-Electron/" class="post-title-link" itemprop="url">Why Electron?</a>
+          
+            <a href="/2020/11/11/Why-Electron/" class="post-title-link" itemprop="url">Why Electron?</a>
         </h2>
 
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2020-11-11 23:14:00" itemprop="dateCreated datePublished" datetime="2020-11-11T23:14:00+05:30">2020-11-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-23 16:36:01" itemprop="dateModified" datetime="2021-03-23T16:36:01+05:30">2021-03-23</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Development/" itemprop="url" rel="index"><span itemprop="name">Development</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Development/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Development/Javascript/Electron/" itemprop="url" rel="index"><span itemprop="name">Electron</span></a>
-        </span>
-    </span>
+              <time title="Created: 2020-11-11 23:14:00" itemprop="dateCreated datePublished" datetime="2020-11-11T23:14:00+05:30">2020-11-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-23 16:36:01" itemprop="dateModified" datetime="2021-03-23T16:36:01+05:30">2021-03-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Development/" itemprop="url" rel="index"><span itemprop="name">Development</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Development/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Development/Javascript/Electron/" itemprop="url" rel="index"><span itemprop="name">Electron</span></a>
+                </span>
+            </span>
 
-  
-</div>
+          
 
         </div>
       </header>
@@ -485,6 +536,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
+
+      
           <h2 id="But-why-Desktop-apps-at-all"><a href="#But-why-Desktop-apps-at-all" class="headerlink" title="But why Desktop apps at all?"></a>But why Desktop apps at all?</h2><p>Before we dive into cross-platform desktop apps, one might ask: </p>
 <p><em>Why do we still need desktop apps? Isn’t Web Apps and PWA the future?</em> </p>
 <p>Well for most of the cases, it’s true. Web Apps have become very efficient and responsive now and can be preferred over desktop apps</p>
@@ -506,18 +559,21 @@
     
     
     
-
-    <footer class="post-footer">
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
+      </footer>
   </article>
-</div>
+  
+  
+  
+
+
+  
 
 
 
-
-
+          </div>
+          
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -526,7 +582,7 @@
       activeClass = localStorage.getItem('comments_active') || activeClass;
     }
     if (activeClass) {
-      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
       if (activeTab) {
         activeTab.click();
       }
@@ -535,19 +591,83 @@
   if (CONFIG.comments.storage) {
     window.addEventListener('tabs:click', event => {
       if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      const commentClass = event.target.classList[1];
+      let commentClass = event.target.classList[1];
       localStorage.setItem('comments_active', commentClass);
     });
   }
 </script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Anshuman Singh"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Anshuman Singh</p>
+  <div class="site-description" itemprop="description"></div>
 </div>
-  </main>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MysteriousAcadia" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MysteriousAcadia" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wanshumansingh@gmail.com" title="E-Mail → mailto:wanshumansingh@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/not_anshuman" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;not_anshuman" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/channel/UCfv0kzKwu6L-nlqkoZhbFaA" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;channel&#x2F;UCfv0kzKwu6L-nlqkoZhbFaA" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/notanshuman" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;notanshuman" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
 
-  <footer class="footer">
-    <div class="footer-inner">
 
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
 
 <div class="copyright">
+  
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
@@ -555,28 +675,57 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Anshuman Singh</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
   </div>
 
-    </div>
-  </footer>
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
 
   
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 
-
-
-
-
-
   
-
-
-
-
 
 </body>
 </html>

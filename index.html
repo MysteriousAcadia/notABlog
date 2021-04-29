@@ -150,6 +150,139 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.anshumansingh.ml/2021/04/29/Firebase-Security-Rules/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Anshuman Singh">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Not A Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/29/Firebase-Security-Rules/" class="post-title-link" itemprop="url">Understanding Firebase Security Rules</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-29 23:43:00" itemprop="dateCreated datePublished" datetime="2021-04-29T23:43:00+05:30">2021-04-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-04-30 00:05:49" itemprop="dateModified" datetime="2021-04-30T00:05:49+05:30">2021-04-30</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>The  Security Rules helps us to determine who has:</p>
+<ul>
+<li>Read and write access to your database.</li>
+<li>How the data is structured</li>
+<li>What indexes exist.</li>
+</ul>
+<p>These rules are live on the Firebase servers and are enforced automatically at all times. Every read and write request will only be completed if your rules allow it. By default, your rules do not allow anyone access to your database. This is to protect your database from abuse until you have time to customize your rules or set up authentication.</p>
+<h1 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax:"></a>Syntax:</h1><p>There are 4 properties that can be configured for each node</p>
+<table>
+<thead>
+<tr>
+<th align="left">Rule Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">.read</td>
+<td align="left">Describes when data is allowed to be read.</td>
+</tr>
+<tr>
+<td align="left">.write</td>
+<td align="left">Describes when the data is allowed to be written.</td>
+</tr>
+<tr>
+<td align="left">.validate</td>
+<td align="left">Defines the format of the data that can be entered.</td>
+</tr>
+<tr>
+<td align="left">.indexOn</td>
+<td align="left">Specifies which child to index for ordering and querying.</td>
+</tr>
+</tbody></table>
+<p>We would be focusing only on .read and .write rules in this post.</p>
+<p>The security rules are written in the form of nested JSON objects. You can define individual rules for each node by nesting it till you reach your node in your database. For example(Read the comments as well to get a better idea)</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">&quot;rules&quot;</span>:&#123; <span class="comment">//The rules start from here.</span></span><br><span class="line"><span class="comment">//These rules will be applicable by default to all paths that are not listed in the rules</span></span><br><span class="line"><span class="attr">&quot;.read&quot;</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="attr">&quot;.write&quot;</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="attr">&quot;parent_node1&quot;</span>:&#123;</span><br><span class="line">	<span class="attr">&quot;child_node1&quot;</span>:&#123;</span><br><span class="line">			<span class="attr">&quot;.read&quot;</span>: &lt;any condition&gt;, </span><br><span class="line">			<span class="attr">&quot;.write&quot;</span>: &lt;any condition&gt;,</span><br><span class="line">			<span class="attr">&quot;.validate&quot;</span>: &lt;any condition&gt;,</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line"><span class="attr">&quot;parent_node2&quot;</span>:&#123;</span><br><span class="line">	<span class="attr">&quot;child_node2&quot;</span>:&#123;</span><br><span class="line">			<span class="attr">&quot;.read&quot;</span>: &lt;any condition&gt;,</span><br><span class="line">			<span class="attr">&quot;.write&quot;</span>: &lt;any condition&gt;,</span><br><span class="line">			<span class="attr">&quot;.validate&quot;</span>: &lt;any condition&gt;,</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>There are few predefined variables in the security rules that help you validate the read or write operation</p>
+<table>
+<thead>
+<tr>
+<th align="left">Variable</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">data</td>
+<td align="left">Contains the data that is about to be read/updated/edited by the user from the database.</td>
+</tr>
+<tr>
+<td align="left">newData</td>
+<td align="left">Contains the data that is about to be entered by the user in the database.</td>
+</tr>
+<tr>
+<td align="left">auth</td>
+<td align="left">Contains the auth info of the user trying to access the database.</td>
+</tr>
+<tr>
+<td align="left">now</td>
+<td align="left">The current time.</td>
+</tr>
+</tbody></table>
+<h2 id="Few-examples-of-security-rules"><a href="#Few-examples-of-security-rules" class="headerlink" title="Few examples of security rules"></a>Few examples of security rules</h2><h3 id="Example-1-Do-not-allow-anyone-to-read-or-write-data"><a href="#Example-1-Do-not-allow-anyone-to-read-or-write-data" class="headerlink" title="Example 1: Do not allow anyone to read or write data."></a>Example 1: Do not allow anyone to read or write data.</h3><p>This is the simplest of all. We want the database to not be edited or read by users. So the .read and .write would both be set to false.</p>
+<p><em>Similarly if we want anyone to read or write data, we can set it to true.</em></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">&quot;rules&quot;</span>:&#123;</span><br><span class="line">	<span class="attr">&quot;.read&quot;</span>:<span class="literal">false</span>,</span><br><span class="line">	<span class="attr">&quot;.write&quot;</span>:<span class="literal">false</span>,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Example-2-Allow-only-authenticated-users-to-access-some-parts-of-database-and-keep-the-rest-public"><a href="#Example-2-Allow-only-authenticated-users-to-access-some-parts-of-database-and-keep-the-rest-public" class="headerlink" title="Example 2: Allow only authenticated users to access some parts of database and keep the rest public,"></a>Example 2: Allow only authenticated users to access some parts of database and keep the rest public,</h3><p>For this scenario, we might have some data that should be visible to everyone(authenticated or not) while have some data that can only be edited by authenticated members. Let’s assume that the public data is in the public node while the private data is in the private node. The JSON would look like:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">&quot;rules&quot;</span>:&#123;</span><br><span class="line"></span><br><span class="line">	<span class="attr">&quot;public&quot;</span>:&#123;</span><br><span class="line">		<span class="attr">&quot;.read&quot;</span>:<span class="literal">true</span>, <span class="comment">//Setting read true by default</span></span><br><span class="line">		<span class="attr">&quot;.write&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">	<span class="attr">&quot;private&quot;</span>:&#123;</span><br><span class="line"><span class="comment">//Checking if the auth variable does not contain uid(which is present for all authenticated users) do not allow</span></span><br><span class="line">		<span class="attr">&quot;.read&quot;</span>:<span class="string">&quot;auth.uid != null&quot;</span>, </span><br><span class="line">		<span class="attr">&quot;.write&quot;</span>: <span class="string">&quot;auth.uid != null&quot;</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>These were some simple rules that could be easily implemented and increase the security of the database. The rules can be made more complex by defining different rules for each node/child and use the data to validate as well.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="https://blog.anshumansingh.ml/2021/04/17/Unity-Integrating-Firebase-Realtime-Database/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
